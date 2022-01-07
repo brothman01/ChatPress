@@ -24,8 +24,6 @@ class ChatPress {
 		self::$options = get_option( 'cp_options', [
 			'cp_delete_messages_after'       => 'weekly',
 			'cp_prevent_email_cron_creation' => 0,
-			'rick'                           => true,
-			'morty'                          => false,
 		] );
 
 		update_option( 'cp_options', self::$options );
@@ -73,7 +71,7 @@ class ChatPress {
 
 		add_action( 'wp_ajax_chatpress_delete_message', [ $this, 'chatpress_delete_message' ] );
 
-		add_action( 'post_submitbox_misc_actions', [ $this, 'cp_add_shortcode_generator_button' ] );
+		// add_action( 'post_submitbox_misc_actions', [ $this, 'cp_add_shortcode_generator_button' ] );
 
 		add_action( 'wp_loaded', [ $this, 'page_loaded' ] );
 
@@ -298,11 +296,8 @@ class ChatPress {
 			'id'              => false,
 			'size'            => false,
 			'stick_to_bottom' => false,
-			'private'         => false,
 			'allowimages'     => false,
 		], $atts );
-
-		if ( 'false' === $atts['private'] ) {
 
 				$channel_query = new WP_Query( [
 					'post_type' => 'chatpress_channel',
@@ -409,7 +404,7 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 
 		?>
 
-		<div style="width: 100%; background: black; color: white; margin-top: 2%; padding: 3% 0px 3% 0px; text-align: center;">Please <a style="color: white;" href="/login">Login</a> to Comment</div>
+		<div style="width: 100%; background: black; color: white; margin-top: 2%; padding: 3% 0px 3% 0px; text-align: center;">Please Login to Comment</div>
 
 		<?php
 }
@@ -428,11 +423,6 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 
 				} // End while().
 			}// End if().
-		} else {
-
-			echo 'private channel';
-
-		} // End if().
 
 		return ' ';
 

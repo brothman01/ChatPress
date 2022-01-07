@@ -1,74 +1,73 @@
-		.chatpress_shortcode_generator_dialog {
-			width: 60%;
-			min-height: 300px;
-			max-height: 400px;
-			background: #F1F1F1;
-			position: absolute;
-			top: 25%;
-			left: 15%;
-			z-index: 9999;
-			/*overflow-x: hidden;*/
-			overflow-y: visible;
+.chatpress_shortcode_generator_dialog {
+	width: 60%;
+	min-height: 300px;
+	max-height: 400px;
+	background: #F1F1F1;
+	position: absolute;
+	top: 25%;
+	left: 15%;
+	z-index: 9999;
+	overflow-y: visible;
 
-			-moz-box-shadow: 0px 1px 21px #000000;
-			-webkit-box-shadow: 0px 1px 21px #000000;
-			box-shadow: 0px 1px 21px #000000;
-		}
+	-moz-box-shadow: 0px 1px 21px #000000;
+	-webkit-box-shadow: 0px 1px 21px #000000;
+	box-shadow: 0px 1px 21px #000000;
+}
 
-			.chatpress_shortcode_generator_title {
-				width: 100%;
-				/*background: #FCFCFC;*/
-				/*border-bottom: solid #DFDFDF 1px;*/
-				padding: 15px 10px;
-				font-family: system-ui;
-				font-weight: 400;
+.chatpress_shortcode_generator_title {
+	width: 100%;
+	padding: 15px 10px;
+	font-family: system-ui;
+	font-weight: 400;
+}
+
+.chatpress_shortcode_generator_dialog_closer {
+	position: absolute;
+	top: -10px;
+	right: -10px;
+	width: 20px;
+	height: 20px;
+	border-radius: 100%;
+	border: solid #F1F1F1 3px;
+	background: black;
+	color: white;
+	text-align: center;
+	cursor: pointer;
+}
+
+.chatpress_shortcode_generator_dialog_middle_section {
+	width: 100%;
+	height: 160px;
+}
+
+.chatpress_shortcode_generator_dialog_middle_top_section {
+	text-align: center;
+}
+
+.chatpress_shortcode_generator_dialog_shortcode_field {
+	width: 80%;
+}
+
+.chatpress_shortcode_generator_field_container {
+	float:left;
+	width: 49%;
+	height: 75px;
+	text-align: center;
+	padding-top: 20px;
+}
+
+.chatpress_shortcode_generator_dialog_bottom_section {
+	width: 100%;
+	padding-bottom: 1%;
+	margin-bottom: 1%;
+	text-align: center;
 			}
 
-			.chatpress_shortcode_generator_dialog_closer {
-				position: absolute;
-				top: -10px;
-				right: -10px;
-				width: 20px;
-				height: 20px;
-				border-radius: 100%;
-				border: solid #F1F1F1 3px;
-				background: black;
-				color: white;
-				text-align: center;
-				cursor: pointer;
-			}
+.chatpress_shortcode_generator_dialog_button_div {
+	width: 30%;
+	margin: 0px auto;
+}
 
-			.chatpress_shortcode_generator_dialog_middle_section {
-				width: 100%;
-				height: 160px;
-			}
-
-				.chatpress_shortcode_generator_dialog_middle_top_section {
-					text-align: center;
-				}
-
-					.chatpress_shortcode_generator_dialog_shortcode_field {
-						width: 80%;
-					}
-
-				.chatpress_shortcode_generator_field_container {
-					float:left;
-					width: 49%;
-					height: 75px;
-					text-align: center;
-					padding-top: 20px;
-				}
-
-			.chatpress_shortcode_generator_dialog_bottom_section {
-				width: 100%;
-				padding-bottom: 1%;
-				margin-bottom: 1%;
-				text-align: center;
-			}
-
-			.chatpress_shortcode_generator_dialog_button_div {
-				width: 30%;
-				margin: 0px auto;
-			}
-
-			#adminmenuwrap {z-index: 10001; }
+#adminmenuwrap {
+	z-index: 10001;
+}
