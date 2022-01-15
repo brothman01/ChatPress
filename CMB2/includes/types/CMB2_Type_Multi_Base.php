@@ -31,7 +31,7 @@ abstract class CMB2_Type_Multi_Base extends CMB2_Type_Base {
 	 * @param  int   $i    Iterator value
 	 * @return string       Gnerated list item html
 	 */
-	public function list_input( $args = array(), $i ) {
+	public function list_input( $args = array(), $i = '' ) {
 		$a = $this->parse_args( 'list_input', array(
 			'type'  => 'radio',
 			'class' => 'cmb2-option',
@@ -78,9 +78,7 @@ abstract class CMB2_Type_Multi_Base extends CMB2_Type_Base {
 			? $field->escaped_value()
 			: $field->get_default();
 
-		if ( is_numeric( $value ) ) {
-			$value = intval( $value );
-		}
+		$value = CMB2_Utils::normalize_if_numeric( $value );
 
 		$concatenated_items = '';
 		$i = 1;
@@ -99,7 +97,7 @@ abstract class CMB2_Type_Multi_Base extends CMB2_Type_Base {
 			$a['label'] = $opt_label;
 
 			// Check if this option is the value of the input
-			if ( $value === $opt_value ) {
+			if ( $value === CMB2_Utils::normalize_if_numeric( $opt_value ) ) {
 				$a['checked'] = 'checked';
 			}
 

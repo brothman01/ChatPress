@@ -1,9 +1,13 @@
 /*--------------------------------------------------------------
-Context Metaboxes
+ * Context Metaboxes
 --------------------------------------------------------------*/
 
 /* Metabox collapse arrow indicators */
 .js .cmb2-postbox.context-box {
+
+	.handlediv {
+		text-align: center;
+	}
 
 	.toggle-indicator {
 		&:before {
