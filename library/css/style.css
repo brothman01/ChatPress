@@ -4,6 +4,7 @@
   padding: 1%;
   width: 100%;
   background: white;
+  min-height: 600px;
 }
 
 .chatpress_channel_content_container {
@@ -14,21 +15,31 @@
   background: transparent;
   padding-left: 5%;
   height: 550px;
+  overflow-y: hidden;
 }
 
 .chatpress_channel_message_container {
   width: 95%;
-  height: 300px;
+  height: 275px;
   background: none;
   overflow-y: scroll;
   border: solid black 1px;
     }
 
 .chatpress_channel_message_container_title {
-  font-size: 20px;
+  font-size: 12px;
   margin-top: 0px;
   font-weight: 700;
   padding-left: 5%;
+}
+
+.chatpress_button_refresh {
+  font-size: 12px;
+}
+
+.message_number_link {
+  font-size: 10px;
+  width: 100%;
 }
 
 .chatpress_channel_message_container_description {
@@ -40,6 +51,7 @@
   width: 100%;
   border: solid black 1px;
   padding: 10px;
+  padding-bottom: 2px;
 }
 
 .chatpress_channel_input_container {

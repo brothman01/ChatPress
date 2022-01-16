@@ -3,7 +3,7 @@
  * Plugin Name: ChatPress
  * Plugin URI:  https://wordpress.org/plugins/chatpress
  * Description: This plugin creates a chatboard to embed on pages that keeps the identity of each poster anonymous.
- * Version:     1.0.0
+ * Version:     1.6.0
  * Author:      Ben Rothman
  * Author URI:  http://www.BenRothman.org
  * Text Domain: chatpress
@@ -71,10 +71,6 @@ class ChatPress {
 
 		add_action( 'wp_ajax_chatpress_delete_message', [ $this, 'chatpress_delete_message' ] );
 
-		// add_action( 'post_submitbox_misc_actions', [ $this, 'cp_add_shortcode_generator_button' ] );
-
-		add_action( 'wp_loaded', [ $this, 'page_loaded' ] );
-
 		add_filter( 'cron_schedules', [ $this, 'custom_cron_schedules' ] );
 
 		add_action( 'init', [ $this, 'cp_create_crontask' ] );
@@ -122,14 +118,6 @@ class ChatPress {
 
 			 update_option( 'cp_options', self::$options );
 		}
-
-		// if ( 1 === $cp_prevent_email_cron_creation && wp_get_schedule('cp_delete_old_messages') != get_option( 'cp_options' )['cp_prevent_email_cron'] ) {
-		//
-		// wp_clear_scheduled_hook( 'cp_delete_old_messages' );
-		//
-		// 	wp_schedule_event( time(), $cp_how_often, 'cp_delete_old_messages' );
-		//
-		// }
 
 	}
 
@@ -299,130 +287,129 @@ class ChatPress {
 			'allowimages'     => false,
 		], $atts );
 
-				$channel_query = new WP_Query( [
-					'post_type' => 'chatpress_channel',
-					'p' => $atts['id'],
-				] );
+		$channel_query = new WP_Query( [
+			'post_type' => 'chatpress_channel',
+			'p' => $atts['id'],
+		] );
 
-			if ( $channel_query->have_posts() ) {
+if ( $channel_query->have_posts() ) {
 
-				while ( $channel_query->have_posts() ) {
+	while ( $channel_query->have_posts() ) {
 
-					$channel_query->the_post();
+		$channel_query->the_post();
 
-					$channel_id = get_the_ID();
+		$channel_id = get_the_ID();
 
-					$channel_styles = '';
+		$channel_styles = '';
 
-					if ( $this->starts_with( $atts['size'],'100%' ) ) {
+		if ( $this->starts_with( $atts['size'],'100%' ) ) {
 
-						$channel_styles = 'width: 100%;';
+			$channel_styles = 'width: 100%;';
 
-					} elseif ( '50% of Container' === $atts['size'] ) {
+		} elseif ( '50% of Container' === $atts['size'] ) {
 
-						$channel_styles = 'width: 50%; height: 600px;';
+			$channel_styles = 'width: 50%; height: 600px;';
 
-					} else {
+		} else {
 
-						$channel_styles = 'width: 300px; height: 600px;';
-					}
+			$channel_styles = 'width: 500px; height: 650px;';
+		}
 
-					if ( 'true' === $atts['stick_to_bottom'] ) {
+		if ( 'true' === $atts['stick_to_bottom'] ) {
 
-						$channel_styles .= ' position: fixed; bottom: 0%;';
+			$channel_styles .= ' position: fixed; bottom: 0%;';
 
-					}
+		}
 
-						$background = 'background: ' . get_post_meta( $atts['id'], 'chatpress_channel_color', true ) . ';';
+			$background = 'background: ' . get_post_meta( $atts['id'], 'chatpress_channel_color', true ) . ';';
 
-					if ( '' !== get_post_meta( $atts['id'], 'chatpress_channel_image', true ) ) {
+		if ( '' !== get_post_meta( $atts['id'], 'chatpress_channel_image', true ) ) {
 
-						$background = 'background: url(' . get_post_meta( $atts['id'], 'chatpress_channel_image', true ) . ');';
+			$background = 'background: url(' . get_post_meta( $atts['id'], 'chatpress_channel_image', true ) . ');';
 
-					}
-					?>
+		}
+		?>
 
-						<div class="chatpress_channel_wrapper" style="<?php echo esc_html( $background ) . ' ' . esc_html( $channel_styles ); ?>" data-index="<?php echo esc_html( $channel_id ); ?>">
+		<div class="chatpress_channel_wrapper" style="<?php echo esc_html( $background ) . ' ' . esc_html( $channel_styles ); ?>" data-index="<?php echo esc_html( $channel_id ); ?>">
 
 
-							<div style="float: right;">
+		<div style="float: right;">
 
-									<a href="#" class="chatpress_button_refresh" style="float: right;" data-index="<?php echo esc_html( $channel_id ); ?>"> <i class="fa fa-refresh" aria-hidden="true"></i> Refresh</a>
+			<a href="#" class="chatpress_button_refresh" style="float: right;" data-index="<?php echo esc_html( $channel_id ); ?>"> <i class="fa fa-refresh" aria-hidden="true"></i> Refresh</a>
 
-							</div>
+		</div>
 
-							<p class="chatpress_channel_message_container_title"> <?php echo get_the_title(); ?> </p>
+			<p class="chatpress_channel_message_container_title"> <?php echo get_the_title(); ?> </p>
 
-							<div class="chatpress_title_hover_div">
-								<p> Moderator: <?php echo esc_html( get_post_meta( get_the_ID(), 'chatpress_channel_moderator', true ) ); ?><br />
-										Topic: <?php echo esc_html( get_post_meta( get_the_ID(), 'chatpress_channel_topic', true ) ); ?>
-								</p>
-							</div>
+			<div class="chatpress_title_hover_div">
+				Moderator: <?php echo esc_html( get_post_meta( get_the_ID(), 'chatpress_channel_moderator', true ) ); ?><br />
+				Topic: <?php echo esc_html( get_post_meta( get_the_ID(), 'chatpress_channel_topic', true ) ); ?>
+			</div>
 
-							<p class="chatpress_channel_message_container_description"> <?php echo get_the_content(); ?> </p>
+		<p class="chatpress_channel_message_container_description"> <?php echo get_the_content(); ?> </p>
 
-								<div class="chatpress_channel_content_container">
+			<div class="chatpress_channel_content_container">
 
-									<div class="chatpress_channel_message_container" data-index="<?php echo esc_html( $channel_id ); ?>">
-								<?php
-									wp_reset_postdata();
+			<div class="chatpress_channel_message_container" data-index="<?php echo esc_html( $channel_id ); ?>">
+					<?php
+						wp_reset_postdata();
 
-									echo $this->cp_populate( $atts['id'] );
+						echo $this->cp_populate( $atts['id'] );
 
-									?>
+						?>
 
-									</div>
+						</div>
 
-									<div class="chatpress_channel_input_container">
+						<div class="chatpress_channel_input_container">
 
-										<?php if ( '100% of container' === $atts['size'] ) { ?>
+							<?php if ( '100% of container' === $atts['size'] ) { ?>
 
-											<input type="text" class="chatpress_text_input chatpress_content_input" placeholder="Message" style="width: 50%; float: left;" data-index="<?php echo esc_html( $channel_id ); ?>"></input>
+								<input type="text" class="chatpress_text_input chatpress_content_input" placeholder="Message" style="width: 50%; float: left;" data-index="<?php echo esc_html( $channel_id ); ?>"></input>
 
-											<input type="text" class="chatpress_text_input chatpress_style_input" placeholder="Style" style="width: 49%;  margin-right: 1%; float: left;" data-index="<?php echo esc_html( $channel_id ); ?>"></input>
+								<input type="text" class="chatpress_text_input chatpress_style_input" placeholder="Style" style="width: 49%;  margin-right: 1%; float: left;" data-index="<?php echo esc_html( $channel_id ); ?>"></input>
 
-											<input type="button" class="chatpress_button_input" value="Send" style="width: 20%; float: left;" data-index="<?php echo esc_html( $channel_id ); ?>"></input>
+								<input type="button" class="chatpress_button_input" value="Send" style="width: 20%; float: left;" data-index="<?php echo esc_html( $channel_id ); ?>"></input>
 
-										<?php
+							<?php
 
 } else {
 
-	if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) {
+if ( current_user_can( 'editor' ) || current_user_can( 'administrator' ) ) {
 
-		wp_editor( '', 'editor_' . esc_html( $channel_id ) );
+wp_editor( '', 'editor_' . esc_html( $channel_id ) );
 
-		?>
+?>
 
-		<input type="button" class="chatpress_button_input" value="Send" style="width: 100%; float: left; margin-top: 1%; padding-top: 20px; padding-bottom: 20px !important;" data-index="<?php echo esc_html( $channel_id ); ?>"></input>
+<input type="button" class="chatpress_button_input" value="Send" style="width: 100%; float: left; margin-top: 1%; padding-top: 20px; padding-bottom: 20px !important;" data-index="<?php echo esc_html( $channel_id ); ?>"></input>
 
 
 <?php
-	}
+}
 }
 
 if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 
-		?>
+?>
 
-		<div style="width: 100%; background: black; color: white; margin-top: 2%; padding: 3% 0px 3% 0px; text-align: center;">Please Login to Comment</div>
+<div style="width: 100%; background: black; color: white; margin-top: 2%; padding: 3% 0px 3% 0px; text-align: center;">Please Login to Comment</div>
 
-		<?php
+<?php
 }
 
-		?>
+?>
 
-		</div>
+</div>
+
+</div>
+
+					</div>
 
 			</div>
 
-								</div>
+	<?php
 
-						</div>
-
-				<?php
-
-				} // End while().
-			}// End if().
+	} // End while().
+}// End if().
 
 		return ' ';
 
@@ -541,11 +528,13 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 
 				}
 
-					$messages .= '<div style="float: left;">' . get_post_meta( get_the_ID(), 'icon', true ) . '</div>';
+					//$messages .= '<div style="float: left;">' . get_post_meta( get_the_ID(), 'icon', true ) . '</div>';
 
-					$messages .= '<p style="float: left;">&nbsp;' . get_post_time( 'm/d/y h:m:s' ) . '&nbsp;&nbsp;</p><a href="#" class="message_number_link" data-index="' . $channel_number . '" style="float: left; color: green; font-size: 10px;" data-message_number="' . get_post_meta( get_the_ID(), 'message_number', true ) . '">' . get_post_meta( get_the_ID(), 'message_number', true ) . '</a>' . '<br /> ';
+					$messages .= '<p style="float: left; width: 100%;">&nbsp;' . get_post_time( 'm/d/y h:m:s' ) . '</p>';
 
-					$messages .= '<p>' . get_the_content() . '</p>';
+					$messages .= '<a href="#" style="float: left;" class="message_number_link" data-index="' . $channel_number . '" style="float: left; color: green; font-size: 10px;" data-message_number="' . get_post_meta( get_the_ID(), 'message_number', true ) . '">' . get_post_meta( get_the_ID(), 'message_number', true ) . '</a>' . '<br /> ';
+
+					$messages .= get_the_content();
 
 					$messages .= '</div>';
 			}
@@ -589,11 +578,11 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 
 		$current_user = wp_get_current_user();
 
-		if ( is_user_logged_in() ) {
-
-			$image = get_avatar( $current_user->user_email, 25 );
-
-		}
+		// if ( is_user_logged_in() ) {
+		//
+		// 	$image = get_avatar( $current_user->user_email, 25 );
+		//
+		// }
 
 		// Insert the post into the database.
 		$my_new_post = wp_insert_post( $my_post );
@@ -660,75 +649,7 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 	 * @since 0.1
 	 */
 	public function cp_parse( $input ) {
-
-		$strlen = strlen( $input ) + 1;
-
-		$output = '';
-
-		$x = 1;
-
-		for ( $i = 0; $i <= $strlen; $i++ ) {
-
-			$char = substr( $input, $i, 1 );
-
-			$preceeding_char = substr( $input, $i - 1, 1 );
-
-			if ( $char === '{' ) {
-
-				if ( '{' === $preceeding_char ) {
-
-					$output = substr( $output, 0, $i - 1 );
-
-					$link_text_id = substr( $input, $i + 1, 21 );
-
-					$output .= '>> <a data-message_id="' . $link_text_id . '" class="cp_quoted_comment_link" href="#">' . $link_text_id . '</a>';
-
-					$output .= '<div data-message_id="' . $link_text_id . '" class="cp_quoted_comment_div" style="background: white; border: solid black 1px; width: 100%; min-height: 50px; padding: 10px; display: none;">';
-
-					$message_query = new WP_Query( [
-						'post_type'      => 'chatpress_message',
-						'posts_per_page' => -1,
-					] );
-
-					if ( $message_query->have_posts() ) {
-
-						while ( $message_query->have_posts() ) {
-
-							$message_query->the_post();
-
-							if ( get_post_meta( get_the_ID(), 'message_number', true ) === $link_text_id ) {
-
-								$output .= get_the_content();
-
-							}
-						}
-
-						wp_reset_postdata();
-
-					} else {
-
-						$content .= 'none';
-
-					}
-
-					$output .= '</div>';
-
-					$i = $i + 25;
-
-				} else {
-
-						$output .= $char;
-
-				}
-			} else {
-
-				$output .= $char;
-
-			}
-		}
-
-		 return $output;
-
+		return $input;
 	}
 
 	 /**
@@ -778,15 +699,6 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 		}
 
 		return $final;
-	}
-
-	/**
-	 * Runs functions on page load (front end)
-	 *
-	 * @since 0.1
-	 */
-	public function page_loaded() {
-
 	}
 
 	/**
