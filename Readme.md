@@ -1,4 +1,14 @@
-# ChatPress
+# ChatPress #
+**Contributors:** [brothman01](https://profiles.wordpress.org/brothman01)  
+**Tags:** [chatroom](https://wordpress.org/themes/tags/chatroom/), [embed](https://wordpress.org/themes/tags/embed/), [AJAX](https://wordpress.org/themes/tags/ajax/)
+**Requires at least:** 4.6  
+**Tested up to:** 5.7  
+**Stable tag:** 1.1.4
+**License:** GPLv2 or later  
+**License URI:** https://www.gnu.org/licenses/gpl-2.0.html
+**Requires PHP 8+**
+
+ [![License](https://img.shields.io/badge/license-GPL--2.0-brightgreen.svg)](https://github.com/brothman01/wp-monitor/blob/master/license.txt) [![PHP >= 8.0](https://img.shields.io/badge/php-%3E=%208.0-8892bf.svg)](https://secure.php.net/supported-versions.php) [![WordPress >= 5.7](https://img.shields.io/badge/wordpress-%3E=%205.7-blue.svg)](https://wordpress.org/download/release-archive/)  
 
 ChatPress creates a shortcode for an embeddable chat that the administrator can embed in the pages so that logged in visitors to the site who have the required user role can chat with each other using AJAX calls to the server.
 
