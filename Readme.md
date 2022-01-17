@@ -1,6 +1,6 @@
 # ChatPress #
 **Contributors:** [brothman01](https://profiles.wordpress.org/brothman01)  
-**Tags:** [chatroom](https://wordpress.org/themes/tags/chatroom/), [embed](https://wordpress.org/themes/tags/embed/), [AJAX](https://wordpress.org/themes/tags/ajax/)
+**Tags:** [chatroom](https://wordpress.org/themes/tags/chatroom/), [embed](https://wordpress.org/themes/tags/embed/), [AJAX](https://wordpress.org/themes/tags/ajax/)<br />
 **Requires at least:** 4.6  
 **Tested up to:** 5.7  
 **Stable tag:** 1.1.4
