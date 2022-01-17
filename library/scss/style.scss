@@ -4,16 +4,21 @@
   padding: 1%;
   width: 100%;
   background: white;
-  min-height: 600px; }
-  .chatpress_channel_wrapper .chatpress_channel_message_container_title {
+  min-height: 600px;
+
+  .chatpress_channel_message_container_title {
     font-size: 12px;
     margin-top: 0px;
     font-weight: 700;
-    padding-left: 5%; }
-  .chatpress_channel_wrapper .chatpress_channel_message_container_description {
     padding-left: 5%;
-    margin-bottom: 20px; }
-  .chatpress_channel_wrapper .chatpress_channel_content_container {
+  }
+
+  .chatpress_channel_message_container_description {
+    padding-left: 5%;
+    margin-bottom: 20px;
+  }
+
+  .chatpress_channel_content_container {
     float: left;
     border: none;
     padding: 1%;
@@ -21,33 +26,50 @@
     background: transparent;
     padding-left: 5%;
     height: 550px;
-    overflow-y: hidden; }
-    .chatpress_channel_wrapper .chatpress_channel_content_container .chatpress_channel_message_container {
+    overflow-y: hidden;
+
+    .chatpress_channel_message_container {
       width: 95%;
       height: 275px;
       background: none;
       overflow-y: scroll;
-      border: solid black 1px; }
-      .chatpress_channel_wrapper .chatpress_channel_content_container .chatpress_channel_message_container .chatpress_message_div {
+      border: solid black 1px;
+
+      .chatpress_message_div {
         width: 100%;
         border: solid black 1px;
         padding: 10px;
-        padding-bottom: 2px; }
-    .chatpress_channel_wrapper .chatpress_channel_content_container .chatpress_channel_input_container {
+        padding-bottom: 2px;
+      }
+    }
+
+    .chatpress_channel_input_container {
       width: 100%;
       margin-left: -2%;
-      overflow: hidden; }
+      overflow: hidden;
+    }
+  }
+}
+
+
+
+
+
 
 .chatpress_button_refresh {
-  font-size: 12px; }
+  font-size: 12px;
+}
 
 .message_number_link {
   font-size: 10px;
-  width: 100%; }
+  width: 100%;
+}
+
 
 .chatpress_text_input,
 .chatpress_button_input {
-  margin-top: 5px; }
+  margin-top: 5px;
+}
 
 .chatpress_message_admin_panel {
   float: right;
@@ -56,14 +78,16 @@
   background: lightgray;
   text-align: center;
   font-size: 10px;
-  line-height: 30px; }
+  line-height: 30px;
+}
 
 .wp-editor-wrap {
   float: left;
   width: 100%;
   max-height: 200px;
   overflow-y: hidden;
-  margin-top: 1%; }
+  margin-top: 1%;
+}
 
 .chatpress_title_hover_div {
   display: none;
@@ -72,9 +96,15 @@
   border-radius: 15px;
   border: solid white 1px;
   margin-top: -10px;
-  padding-left: 5%; }
+  padding-left: 5%;
+}
+
 
 /* Theme overrides */
 @media screen and (min-width: 77.5em) {
+
   p {
-    margin-bottom: 0px !important; } }
+    margin-bottom: 0px !important;
+  }
+
+}
