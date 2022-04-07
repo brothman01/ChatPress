@@ -3,7 +3,7 @@
  * Plugin Name: ChatPress
  * Plugin URI:  https://wordpress.org/plugins/chatpress
  * Description: This plugin creates a chatboard to embed on pages that keeps the identity of each poster anonymous.
- * Version:     1.6.0
+ * Version:     1.7.0
  * Author:      Ben Rothman
  * Author URI:  http://www.BenRothman.org
  * Text Domain: chatpress
