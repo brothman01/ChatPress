@@ -22,5 +22,11 @@ where `xx` is the id of the channel post
 **1.7.0:**
 - Added timer to AJAX refresh messages every 3 seconds.
 
-** Future Features:
+**1.6.0**
+- Restored SASS support
+
+**1.5.0**
+- Removed username from chat message to preserve anonimity of the author.
+
+## Future Features:
 * None Planned at this time
