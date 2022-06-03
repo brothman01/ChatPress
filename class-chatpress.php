@@ -553,15 +553,15 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 	 */
 	public function chatpress_post_message() {
 
-		$message = wp_unslash( $_POST['data']['message'] );
+		$message = wp_unslash( sanitize_text_field( $_POST['data']['message'] ) );
 
 		$message = $this->cp_parse( $message );
 
-		$index = wp_unslash( $_POST['data']['index'] );
+		$index = wp_unslash( sanitize_text_field( $_POST['data']['index'] ) );
 
-		$author = wp_unslash( $_POST['data']['author'] );
+		$author = wp_unslash( sanitize_text_field( $_POST['data']['author'] ) );
 
-		$style = wp_unslash( $_POST['data']['style'] );
+		$style = wp_unslash( sanitize_text_field( $_POST['data']['style'] ) );
 
 		$message_number = $this->random_20_chars();
 
@@ -610,7 +610,7 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 	 */
 	public function chatpress_refresh_message() {
 
-		$index = wp_unslash( $_POST['data']['index'] );
+		$index = wp_unslash( sanitize_text_field( $_POST['data']['index'] ) );
 
 		$new_query = $this->cp_populate( $index );
 
@@ -629,7 +629,7 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 	 */
 	public function chatpress_delete_message() {
 
-		$index = wp_unslash( $_POST['data']['index'] );
+		$index = wp_unslash( sanitize_text_field( $_POST['data']['index'] ) );
 
 		wp_delete_post( $index, false );
 
