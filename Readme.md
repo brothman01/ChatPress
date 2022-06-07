@@ -4,7 +4,7 @@
 [AJAX](https://wordpress.org/themes/tags/ajax/), [support](https://wordpress.org/themes/tags/support/), [discussion](https://wordpress.org/themes/tags/discussion/), [crowd](https://wordpress.org/themes/tags/crowd/), [input](https://wordpress.org/themes/tags/input/)<br />
 **Requires at least:** 4.6  
 **Tested up to:** 5.7  
-**Stable tag:** 1.1.4
+**Stable tag:** 1.8.0
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html
 **Requires PHP 8+**
@@ -19,6 +19,9 @@ ChatPress creates a shortcode for an embeddable chat that the administrator can 
 where `xx` is the id of the channel post
 
 ## Changelog:
+**1.8.0**
+- Submitted plugin to WordPress plugin repository.
+
 **1.7.0:**
 - Added timer to AJAX refresh messages every 3 seconds.
 

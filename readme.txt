@@ -4,7 +4,7 @@ Tags: chatroom, ajax, livechat, llive, support
 Requires at least: 4.2
 Tested up to: 6.0
 Requires PHP: 8.0
-Stable tag: 1.0.0
+Stable tag: 1.8.0
 License: GPL
 
 A simple WordPress plugin to easily add livechat to your site so that your users can communicate with eachother in real time.
@@ -27,3 +27,19 @@ Yes.
 
 Can images be used in chat messages?
 Yes
+
+Changelog:
+**1.8.0**
+- Submitted plugin to WordPress plugin repository.
+
+**1.7.0:**
+- Added timer to AJAX refresh messages every 3 seconds.
+
+**1.6.0**
+- Restored SASS support
+
+**1.5.0**
+- Removed username from chat message to preserve anonimity of the author.
+
+## Future Features:
+* None Planned at this time
