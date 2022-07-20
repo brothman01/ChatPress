@@ -16,8 +16,8 @@ ChatPress creates a shortcode for an embeddable chat that the administrator can 
 
 ## Shortcode:
 `[chatpress_channel id="xx"]`
-where `xx` is the id of the channel post
--- OR --
+where `xx` is the id of the channel post<br />
+-- OR --<br />
 just look at the list view of every chatpress channel on the dashboard and copy what is in the 'Shortcode' column.
 ## Changelog:
 
