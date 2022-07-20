@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin Name: ChatPress
- * Plugin URI:  https://wordpress.org/plugins/chatpress
- * Description: This plugin creates a chatboard to embed on pages that keeps the identity of each poster anonymous.
- * Version:     1.8.0
- * Author:      Ben Rothman
- * Author URI:  http://www.BenRothman.org
- * Text Domain: chatpress
- * License:     GPL-2.0+
+ * Plugin Name:  ChatPress
+ * Plugin URI:   https://wordpress.org/plugins/chatpress
+ * Description:  This plugin creates a chatboard that updates with AJAX to embed on pages that keeps the identity of each poster anonymous.
+ * Version:      1.9.0
+ * Contributors: brothman01
+ * Author URI:   http://www.BenRothman.org
+ * Text Domain:  chatpress
+ * License:      GPL-2.0+
  **/
 class ChatPress {
 
@@ -32,10 +32,28 @@ class ChatPress {
 
 		add_action( 'init', [ $this, 'chatpress_message_function' ], 0 );
 
-		add_shortcode( 'chatpress_channel' , [ $this, 'cp_shortcode_function' ] );
+		add_shortcode( 'chatpress_channel' , [ $this, 'cp_shortcode_cb' ] );
 
-		$this->init();
+		$this->cp_init();
 
+		$this->cp_add_shortcode_column();
+
+	}
+
+	/**
+	 * Adds an additional column to the CPT list view showing the shortcode
+	 * for each chatpress_channel.
+	 *
+	 * @since 1.9.0
+	 */
+	public function cp_add_shortcode_column() {
+		add_filter('manage_chatpress_channel_posts_columns', function($columns) {
+			return array_merge($columns, ['verified' => __('Verified', 'textdomain')]);
+		});
+		 
+		add_action('manage_chatpress_channel_posts_custom_column', function($column_key, $post_id) {
+				_e('[chatpress_channel id="'. $post_id .'"]', 'textdomain');
+		}, 10, 2);
 	}
 
 	/**
@@ -43,7 +61,7 @@ class ChatPress {
 	 *
 	 * @since 0.1
 	 */
-	public function init() {
+	public function cp_init() {
 
 		if ( file_exists( dirname( __FILE__ ) . '/cmb2/init.php' ) ) {
 
@@ -75,30 +93,12 @@ class ChatPress {
 
 		add_action( 'init', [ $this, 'cp_create_crontask' ] );
 
-		add_action( 'admin_init', array( $this, 'wpm_settings_init' ) );
+		add_action( 'admin_init', array( $this, 'cp_settings_init' ) );
 
 	}
 
 	/**
-	 * [wpm_settings_init A method to create the settings used by the plugin.]
-	 */
-	public function wpm_settings_init() {
-				register_setting(
-					'cp_options',
-					'cp_options',
-					[ $this, 'wpm_sanitize' ]
-				);
-
-				register_setting(
-					'cp_prevent_email_cron_creation',
-					'cp_prevent_email_cron_creation',
-					[ $this, 'wpm_sanitize' ]
-				);
-
-	}
-
-	/**
-	 *  Make the crontask to erase old messages
+	 *  Make a crontask to erase old messages
 	 *
 	 * @since 0.1
 	 */
@@ -120,17 +120,6 @@ class ChatPress {
 		}
 
 	}
-
-	public function wpm_sanitize( $input ) {
-
-					$valid = array();
-
-					$valid['wpm_show_monitor'] = (bool) empty( $input['cp_prevent_email_cron_creation'] ) ? 0 : 1;
-
-					return $valid;
-
-	}
-
 
 	/**
 	 * Register ChatPress Channel CPT
@@ -189,32 +178,6 @@ class ChatPress {
 			'menu_icon'           => 'dashicons-media-document',
 		];
 		register_post_type( 'chatpress_channel', $args );
-
-	}
-
-	/**
-	 *  Add Generate Shortcode button to ChatPress Channel post-type.
-	 *
-	 * @since 0.1
-	 */
-	public function cp_add_shortcode_generator_button() {
-
-		global $post_type;
-
-		if ( 'chatpress_channel' === $post_type ) {
-
-					$html  = '<div id="major-publishing-actions" style="overflow:hidden">';
-
-						$html .= '<div id="publishing-action">';
-
-							$html .= '<input type="button" accesskey="p" data-index="' . get_the_ID() . '" tabindex="5" value="Generate Shortcode" class="button-primary chatpress_shortcode_button" id="custom" name="publish">';
-
-						$html .= '</div>';
-
-					$html .= '</div>';
-
-					echo esc_html( $html );
-		}
 
 	}
 
@@ -278,7 +241,7 @@ class ChatPress {
 	 *
 	 * @since 0.1
 	 */
-	public function cp_shortcode_function( $atts ) {
+	public function cp_shortcode_cb( $atts ) {
 
 		$atts = shortcode_atts( [
 			'id'              => false,

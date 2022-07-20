@@ -3,8 +3,8 @@
 **Tags:** [chatroom](https://wordpress.org/themes/tags/chatroom/), [embed](https://wordpress.org/themes/tags/embed/), 
 [AJAX](https://wordpress.org/themes/tags/ajax/), [support](https://wordpress.org/themes/tags/support/), [discussion](https://wordpress.org/themes/tags/discussion/), [crowd](https://wordpress.org/themes/tags/crowd/), [input](https://wordpress.org/themes/tags/input/)<br />
 **Requires at least:** 4.6  
-**Tested up to:** 5.7  
-**Stable tag:** 1.8.0
+**Tested up to:** 6.1
+**Stable tag:** 1.9.0
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html
 **Requires PHP 8+**

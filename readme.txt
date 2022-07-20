@@ -2,9 +2,9 @@
 Contributors: Ben Rothmsn
 Tags: chatroom, ajax, livechat, llive, support
 Requires at least: 4.2
-Tested up to: 6.0
+Tested up to: 6.1
 Requires PHP: 8.0
-Stable tag: 1.8.0
+Stable tag: 1.9.0
 License: GPL
 
 A simple WordPress plugin to easily add livechat to your site so that your users can communicate with eachother in real time.
@@ -22,13 +22,18 @@ No, only logged in users can write into the chat window.
 Does the channel refresh automatically?
 The chat channel refreshes every 3 seconds automatically getting any new messages, however the viewer of the channel can also refresh the channel manually by clicking the refresh button at the top-right of the chatroom.
 
-Are Messages anonymous?
+Are the senders of messages anonymous?
 Yes.
 
 Can images be used in chat messages?
 Yes
 
 Changelog:
+**1.9.0**
+- Added column to show shortcode of every channel
+- Fixed function named and do comments
+- Updated readme
+
 **1.8.0**
 - Submitted plugin to WordPress plugin repository.
 
