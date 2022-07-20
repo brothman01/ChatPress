@@ -4,7 +4,7 @@
 [AJAX](https://wordpress.org/themes/tags/ajax/), [support](https://wordpress.org/themes/tags/support/), [discussion](https://wordpress.org/themes/tags/discussion/), [crowd](https://wordpress.org/themes/tags/crowd/), [input](https://wordpress.org/themes/tags/input/)<br />
 **Requires at least:** 4.6  
 **Tested up to:** 6.1
-**Stable tag:** 1.9.0
+**Stable tag:** 2.0.0
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html
 **Requires PHP 8+**
@@ -20,6 +20,15 @@ where `xx` is the id of the channel post
 -- OR --
 just look at the list view of every chatpress channel on the dashboard and copy what is in the 'Shortcode' column.
 ## Changelog:
+
+**2.0.0**
+- Updated readme
+
+**1.9.0**
+- Added column to show shortcode of every channel
+- Fixed function named and do comments
+- Updated readme
+
 **1.8.0**
 - Submitted plugin to WordPress plugin repository.
 
