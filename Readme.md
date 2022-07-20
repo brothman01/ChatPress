@@ -3,12 +3,12 @@
 **Tags:** [chatroom](https://wordpress.org/themes/tags/chatroom/), [embed](https://wordpress.org/themes/tags/embed/), 
 [AJAX](https://wordpress.org/themes/tags/ajax/), [support](https://wordpress.org/themes/tags/support/), [discussion](https://wordpress.org/themes/tags/discussion/), [crowd](https://wordpress.org/themes/tags/crowd/), [input](https://wordpress.org/themes/tags/input/)<br />
 **Requires at least:** 4.6  
-**Tested up to:** 5.7  
-**Stable tag:** 1.8.0
+**Tested up to:** 6.1
+**Stable tag:** 2.0.0
 **License:** GPLv2 or later  
-**License URI:** https://www.gnu.org/licenses/gpl-2.0.html
-**Requires PHP 8+**
-**Current Version: 1.7.0**
+**License URI:** https://www.gnu.org/licenses/gpl-2.0.html<br />
+**Requires PHP 8+**<br />
+**Current Version: 2.0.0**
 
  [![License](https://img.shields.io/badge/license-GPL--2.0-brightgreen.svg)](https://github.com/brothman01/wp-monitor/blob/master/license.txt) [![PHP >= 8.0](https://img.shields.io/badge/php-%3E=%208.0-8892bf.svg)](https://secure.php.net/supported-versions.php) [![WordPress >= 5.7](https://img.shields.io/badge/wordpress-%3E=%205.7-blue.svg)](https://wordpress.org/download/release-archive/)  
 
@@ -16,9 +16,19 @@ ChatPress creates a shortcode for an embeddable chat that the administrator can 
 
 ## Shortcode:
 `[chatpress_channel id="xx"]`
-where `xx` is the id of the channel post
-
+where `xx` is the id of the channel post<br />
+-- OR --<br />
+just look at the list view of every chatpress channel on the dashboard and copy what is in the 'Shortcode' column.
 ## Changelog:
+
+**2.0.0**
+- Updated readme
+
+**1.9.0**
+- Added column to show shortcode of every channel
+- Fixed function named and do comments
+- Updated readme
+
 **1.8.0**
 - Submitted plugin to WordPress plugin repository.
 

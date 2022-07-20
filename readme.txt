@@ -1,16 +1,23 @@
 === ChatPress ===
-Contributors: Ben Rothmsn
-Tags: chatroom, ajax, livechat, llive, support
+Contributors: brothman01
+Tags: chatroom, ajax, livechat, live, support
 Requires at least: 4.2
-Tested up to: 6.0
+Tested up to: 6.1
 Requires PHP: 8.0
-Stable tag: 1.8.0
+Stable tag: 2.0.0
 License: GPL
 
-A simple WordPress plugin to easily add livechat to your site so that your users can communicate with eachother in real time.
+A simple WordPress plugin to easily add livechat to your site so that your users can communicate with eachother in real time anonymously.
 
 == Installation ==
-Download the plugin from the official WordPress repo and click \'Activate\' when the plugin has finished downloading or download a zip file of the plugin and install it manually.
+This plugin operates using a shortcode, so any page that has a shortcode on it will show
+the channel the shortcode is associated with.
+
+To get the Shortcode, either manually type:
+[chatpress_channel id="xx"]
+where `xx` is the id of the channel post
+-- OR --
+just look at the list view of every chatpress channel on the dashboard and copy what is in the 'Shortcode' column onto the page of your choice.
 
 == Frequently Asked Questions ==
 Can anyone read the chat transcript?
@@ -22,13 +29,18 @@ No, only logged in users can write into the chat window.
 Does the channel refresh automatically?
 The chat channel refreshes every 3 seconds automatically getting any new messages, however the viewer of the channel can also refresh the channel manually by clicking the refresh button at the top-right of the chatroom.
 
-Are Messages anonymous?
+Are the senders of messages anonymous?
 Yes.
 
 Can images be used in chat messages?
 Yes
 
 Changelog:
+**1.9.0**
+- Added column to show shortcode of every channel
+- Fixed function named and do comments
+- Updated readme
+
 **1.8.0**
 - Submitted plugin to WordPress plugin repository.
 
