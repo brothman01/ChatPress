@@ -10,7 +10,14 @@ License: GPL
 A simple WordPress plugin to easily add livechat to your site so that your users can communicate with eachother in real time.
 
 == Installation ==
-Download the plugin from the official WordPress repo and click \'Activate\' when the plugin has finished downloading or download a zip file of the plugin and install it manually.
+This plugin operates using a shortcode, so any page that has a shortcode on it will show
+the channel the shortcode is associated with.
+
+To get the Shortcode, either manually type:
+[chatpress_channel id="xx"]
+where `xx` is the id of the channel post
+-- OR --
+just look at the list view of every chatpress channel on the dashboard and copy what is in the 'Shortcode' column onto the page of your choice.
 
 == Frequently Asked Questions ==
 Can anyone read the chat transcript?
