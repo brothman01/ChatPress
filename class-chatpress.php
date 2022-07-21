@@ -93,8 +93,6 @@ class ChatPress {
 
 		add_action( 'init', [ $this, 'cp_create_crontask' ] );
 
-		add_action( 'admin_init', array( $this, 'cp_settings_init' ) );
-
 	}
 
 	/**
