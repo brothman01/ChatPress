@@ -1,8 +1,8 @@
-jQuery( document ).ready( function() {
+jQuery( document ).ready( function($) {
 
-	jQuery( 'body' ).on( 'click', '.chatpress_shortcode_button', function() {
+	$( 'body' ).on( 'click', '.chatpress_shortcode_button', function() {
 
-		var index = jQuery( this ).data( 'index' );
+		var index = $( this ).data( 'index' );
 
 		var dialog = '<div class="chatpress_shortcode_generator_dialog">';
 
@@ -65,36 +65,36 @@ jQuery( document ).ready( function() {
 
 			dialog += '</div>';
 
-		if ( !jQuery( '.chatpress_shortcode_generator_dialog' ).length ) {
+		if ( !$( '.chatpress_shortcode_generator_dialog' ).length ) {
 
-			jQuery( 'body' ).prepend( dialog );
+			$( 'body' ).prepend( dialog );
 
 		}
 
 	});
 
 
-	jQuery( 'body' ).on( 'click', '.chatpress_shortcode_dialog_close_button', function() {
+	$( 'body' ).on( 'click', '.chatpress_shortcode_dialog_close_button', function() {
 
-		jQuery( '.chatpress_shortcode_generator_dialog' ).remove();
-
-	});
-
-	jQuery( 'body' ).on( 'click', '.chatpress_shortcode_generator_dialog_closer', function() {
-
-		jQuery( '.chatpress_shortcode_generator_dialog' ).remove();
+		$( '.chatpress_shortcode_generator_dialog' ).remove();
 
 	});
 
-		jQuery( 'body' ).on( 'click', '.chatpress_shortcode_dialog_refresh_button', function() {
+	$( 'body' ).on( 'click', '.chatpress_shortcode_generator_dialog_closer', function() {
 
-		 var index = jQuery( this ).data( 'index' );
+		$( '.chatpress_shortcode_generator_dialog' ).remove();
 
-		 var shortcode_size = jQuery( '.chatpress_shortcode_dialog_size_picker option:selected' ).text()
+	});
+
+		$( 'body' ).on( 'click', '.chatpress_shortcode_dialog_refresh_button', function() {
+
+		 var index = $( this ).data( 'index' );
+
+		 var shortcode_size = $( '.chatpress_shortcode_dialog_size_picker option:selected' ).text()
 
 		 var shortcode_sticktobottom = true;
 
-		 if ( jQuery( '.chatpress_shortcode_generator_sticktobottom_checkbox' ).is(":checked") ) {
+		 if ( $( '.chatpress_shortcode_generator_sticktobottom_checkbox' ).is(":checked") ) {
 
 			shortcode_sticktobottom = true;
 
@@ -106,7 +106,7 @@ jQuery( document ).ready( function() {
 
 		var shortcode_private = true;
 
-		 if ( jQuery( '.chatpress_shortcode_generator_private_checkbox' ).is(":checked") ) {
+		 if ( $( '.chatpress_shortcode_generator_private_checkbox' ).is(":checked") ) {
 
 			shortcode_private = true;
 
@@ -123,8 +123,13 @@ jQuery( document ).ready( function() {
 		 shortcode += 'size=\"' + shortcode_size + '\" ' + 'stick_to_bottom=\"' + shortcode_sticktobottom + '\" ';
 		 shortcode += 'private=\"' + shortcode_private + '\"]';
 
-		jQuery( '.chatpress_shortcode_generator_dialog_shortcode_field').val( shortcode );
+		$( '.chatpress_shortcode_generator_dialog_shortcode_field').val( shortcode );
 
 	});
+
+	// erase all button is clicked
+	$('#erase-old').on( 'click', function() {
+        console.log('clicked');
+    });
 
 });
