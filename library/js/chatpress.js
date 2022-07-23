@@ -56,8 +56,6 @@ jQuery( document ).ready( function($) {
 	// auto-refresh every 3 seconds
 	setInterval(function(){ 
 		$(".chatpress_button_refresh").click();
-		$( ".cp_date" ).each(function() {
-		});
 		console.log('auto-refreshing');
 	},3000);
 	
