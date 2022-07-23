@@ -280,6 +280,8 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 
 			while ( $message_query->have_posts() ) {
 
+
+
 					$message_query->the_post();
 
 					$messages .= '<div class="chatpress_message_div" data-index="' . get_the_title() . '">';
@@ -294,7 +296,7 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 
 				}
 
-					$messages .= '<p style="float: left; width: 100%;" class="date">&nbsp;' . strftime("%m/%d/%Y %H:%M:%S %Z", strtotime( get_post_time( 'm/d/y h:m:s' ) ) ) . '</p>';
+					$messages .= '<p style="float: left; width: 100%;" class="cp_date">&nbsp;' . strftime("%m/%d/%Y %H:%M:%S %Z", strtotime( get_post_time( 'm/d/y h:m:s' ) ) ) . '</p>';
 
 					$messages .= get_the_content();
 
@@ -327,7 +329,9 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 
 		$message_number = $this->random_20_chars();
 
-		// Create post object.
+		// Create post object with standardized time
+		date_default_timezone_set( wp_timezone_string() );
+
 		$my_post = [
 			'post_title'    => $index,
 			'post_type'     => 'chatpress_message',

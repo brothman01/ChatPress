@@ -1,18 +1,18 @@
-jQuery( document ).ready( function() {
+jQuery( document ).ready( function($) {
 
-	jQuery('.cp_quoted_comment_div').hide();
+	$('.cp_quoted_comment_div').hide();
 	
 	// the button to add a new button is clicked
-	jQuery( 'body' ).on( 'click', '.chatpress_button_input', function() {
+	$( 'body' ).on( 'click', '.chatpress_button_input', function() {
 	
-		var index             = jQuery( this ).data( 'index' ),
-				button        = jQuery( this ),
+		var index             = $( this ).data( 'index' ),
+				button        = $( this ),
 				message_input = tinymce.editors['editor_' + index].getContent(),
-				author_input  = jQuery( '.chatpress_author_input' ),
-				style_input   = jQuery( '.chatpress_style_input' );
+				author_input  = $( '.chatpress_author_input' ),
+				style_input   = $( '.chatpress_style_input' );
 				message       = message_input, // parse this input
-				author        = jQuery( author_input ).val(),
-				style         = jQuery( style_input ).val();
+				author        = $( author_input ).val(),
+				style         = $( style_input ).val();
 	
 		var data = {
 			index: index,
@@ -23,11 +23,11 @@ jQuery( document ).ready( function() {
 	
 		tinymce.editors['editor_' + index].setContent('');
 	
-		// jQuery( message_input ).val('');
+		// $( message_input ).val('');
 	
-		jQuery( author_input ).val('');
+		$( author_input ).val('');
 	
-		jQuery( style_input ).val('');
+		$( style_input ).val('');
 	
 			jQuery.ajax({
 			type: 'POST',   // Adding Post method
@@ -39,10 +39,10 @@ jQuery( document ).ready( function() {
 			success: function( response ) { // Show returned data using the function.
 				// alert( data.message );
 	
-				var channel    = jQuery( '.chatpress_channel_message_container' ),
-					this_index = jQuery( channel ).data( 'index' );
+				var channel    = $( '.chatpress_channel_message_container' ),
+					this_index = $( channel ).data( 'index' );
 	
-				jQuery( '.chatpress_message_div' ).remove();
+				$( '.chatpress_message_div' ).remove();
 	
 				channel.prepend( response.data.message );
 	
@@ -55,24 +55,26 @@ jQuery( document ).ready( function() {
 
 	// auto-refresh every 3 seconds
 	setInterval(function(){ 
-		jQuery(".chatpress_button_refresh").click();
+		$(".chatpress_button_refresh").click();
+		$( ".cp_date" ).each(function() {
+		});
 		console.log('auto-refreshing');
 	},3000);
 	
 
 	 // the refresh button is clicked
-	jQuery( 'body' ).on( 'click', '.chatpress_button_refresh', function( e ) {
+	$( 'body' ).on( 'click', '.chatpress_button_refresh', function( e ) {
 	
 		e.preventDefault();
 	
-		var index         = jQuery( this ).data( 'index' ),
-			button        = jQuery( this ),
-			message_input = jQuery( '.chatpress_content_input' ),
-			author_input  = jQuery( '.chatpress_author_input' ),
-			style_input   = jQuery( '.chatpress_style_input' ),
-			message       = jQuery( message_input ).val(),
-			author        = jQuery( author_input ).val(),
-			style         = jQuery( style_input ).val();
+		var index         = $( this ).data( 'index' ),
+			button        = $( this ),
+			message_input = $( '.chatpress_content_input' ),
+			author_input  = $( '.chatpress_author_input' ),
+			style_input   = $( '.chatpress_style_input' ),
+			message       = $( message_input ).val(),
+			author        = $( author_input ).val(),
+			style         = $( style_input ).val();
 	
 		var data = {
 			index: index,
@@ -92,15 +94,12 @@ jQuery( document ).ready( function() {
 			success: function( response ) { // Show returned data using the function.
 				// alert( data.message );
 	
-				var channel    = jQuery( '.chatpress_channel_message_container' ),
-					this_index = jQuery( channel ).data( 'index' );
+				var channel    = $( '.chatpress_channel_message_container' ),
+					this_index = $( channel ).data( 'index' );
 	
-						jQuery( '.chatpress_message_div' ).remove();
+						$( '.chatpress_message_div' ).remove();
 	
 						channel.html( response.data.query_results );
-
-				
-	
 			}
 	
 			});
@@ -109,12 +108,12 @@ jQuery( document ).ready( function() {
 	});
 	
 	// the delete button is clicked for a message
-	jQuery( 'body' ).on( 'click', '.message_delete_link', function( e ) {
+	$( 'body' ).on( 'click', '.message_delete_link', function( e ) {
 		e.preventDefault();
 	
-		var message_container = jQuery( this ).parent().parent();
+		var message_container = $( this ).parent().parent();
 	
-		var id = jQuery( this ).data( 'index' );
+		var id = $( this ).data( 'index' );
 	
 		var data = {
 			index:id,
@@ -141,33 +140,33 @@ jQuery( document ).ready( function() {
 	});
 	
 	
-	jQuery( 'body' ).on( 'click', '.message_number_link', function( e ) {
+	$( 'body' ).on( 'click', '.message_number_link', function( e ) {
 	
 	e.preventDefault();
 	
-	var message_number = jQuery( this ).data( 'message_number' ),
-			index          = jQuery( this ).data( 'index' ),
+	var message_number = $( this ).data( 'message_number' ),
+			index          = $( this ).data( 'index' ),
 			content        = tinymce.editors['editor_' + index].getContent();
 	
 	tinymce.editors['editor_' + index].setContent( content + '{{' + message_number + '' );
 	
 	});
 	
-	jQuery( '.chatpress_channel_message_container_title' ).hover( function() {
+	$( '.chatpress_channel_message_container_title' ).hover( function() {
 	
-	jQuery('.chatpress_title_hover_div').show();
-	
-	});
-	
-	jQuery( '.chatpress_channel_message_container_title' ).mouseout( function() {
-	
-	jQuery('.chatpress_title_hover_div').hide();
+	$('.chatpress_title_hover_div').show();
 	
 	});
 	
-	jQuery( 'body' ).on( 'click', '.cp_quoted_comment_link', function( e ) {
+	$( '.chatpress_channel_message_container_title' ).mouseout( function() {
 	
-	var message_number = jQuery( this ).data( 'message_id' );
+	$('.chatpress_title_hover_div').hide();
+	
+	});
+	
+	$( 'body' ).on( 'click', '.cp_quoted_comment_link', function( e ) {
+	
+	var message_number = $( this ).data( 'message_id' );
 	
 	e.preventDefault();
 	
@@ -175,16 +174,16 @@ jQuery( document ).ready( function() {
 	
 	var div_string = '.cp_quoted_comment_div[data-message_id="' + message_number + '"]';
 	
-	var the_div = jQuery( this ).parent().parent().find( div_string );
+	var the_div = $( this ).parent().parent().find( div_string );
 	
 	
-	if ( jQuery( the_div ).css('display') === 'none') {
+	if ( $( the_div ).css('display') === 'none') {
 	
-		jQuery( the_div ).show();
+		$( the_div ).show();
 	
 	} else {
 	
-		jQuery( the_div ).hide();
+		$( the_div ).hide();
 	
 	}
 	
