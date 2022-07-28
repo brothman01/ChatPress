@@ -524,9 +524,9 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 	 */
 	public function cp_enqueue_styles() {
 
-		wp_enqueue_style( 'cp_stylesheet', plugin_dir_url( __FILE__ ) . '../library/css/style.css', [], false, 'all' );
+		wp_enqueue_style( 'cp_stylesheet', plugin_dir_url( __FILE__ ) . '/library/css/style.css', [], false, 'all' );
 
-		wp_enqueue_style( 'cp_fontawesome', plugin_dir_url( __FILE__ ) . '../library/fonts/font-awesome-4.7.0/css/font-awesome.min.css', [], false, 'all' );
+		wp_enqueue_style( 'cp_fontawesome', plugin_dir_url( __FILE__ ) . '/library/fonts/font-awesome-4.7.0/css/font-awesome.min.css', [], false, 'all' );
 
 	}
 
@@ -537,7 +537,7 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 	 */
 	public function cp_enqueue_admin_scripts() {
 
-		wp_register_script( 'cp_backend', plugin_dir_url( __FILE__ ) . '../library/js/chatpress_backend.js', [ 'jquery' ], 'all', true );
+		wp_register_script( 'cp_backend', plugin_dir_url( __FILE__ ) . '/library/js/chatpress_backend.js', [ 'jquery' ], 'all', true );
 
 		wp_localize_script( 'cp_backend', 'cp_script', [
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
@@ -545,7 +545,7 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 
 		wp_enqueue_script( 'cp_backend' );
 
-		wp_enqueue_style( 'cp_admin_stylesheet', plugin_dir_url( __FILE__ ) . '../library/css/admin_style.css', [], false, 'all' );
+		wp_enqueue_style( 'cp_admin_stylesheet', plugin_dir_url( __FILE__ ) . '/library/css/admin_style.css', [], false, 'all' );
 
 	}
 
@@ -556,7 +556,7 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 	 */
 	public function cp_enqueue_scripts() {
 
-		wp_register_script( 'cp_script', plugin_dir_url( __FILE__ ) . '../library/js/chatpress.js', [ 'jquery' ], 'all', true );
+		wp_register_script( 'cp_script', plugin_dir_url( __FILE__ ) . '/library/js/chatpress.js', [ 'jquery' ], 'all', true );
 
 		wp_localize_script( 'cp_script', 'cp_script', [
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
@@ -564,7 +564,7 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 
 		wp_enqueue_script( 'cp_script' );
 
-		wp_register_script( 'cp_frontend', plugin_dir_url( __FILE__ ) . '../library/js/chatpress_frontend.js', [ 'jquery' ], 'all', true );
+		wp_register_script( 'cp_frontend', plugin_dir_url( __FILE__ ) . '/library/js/chatpress_frontend.js', [ 'jquery' ], 'all', true );
 
 		wp_enqueue_script( 'cp_frontend' );
 
