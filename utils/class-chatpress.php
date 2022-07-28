@@ -357,11 +357,10 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 
 		$index = wp_unslash( sanitize_text_field( $_POST['data']['index'] ) );
 
-		$author = wp_unslash( sanitize_text_field( $_POST['data']['author'] ) );
+		// $author = wp_unslash( sanitize_text_field( $_POST['data']['author'] ) );
 
 		$style = wp_unslash( sanitize_text_field( $_POST['data']['style'] ) );
 
-		$message_number = $this->random_20_chars();
 
 		// Create post object with standardized time
 		date_default_timezone_set( wp_timezone_string() );
@@ -374,28 +373,18 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 			'post_author'   => 1,
 		];
 
-		$message_number = $this->random_20_chars();
+		// Insert the post into the database if the post is not empty
+		if ( $message != NULL && $message != '' ) {
+			$my_new_post = wp_insert_post( $my_post );
 
-		$current_user = wp_get_current_user();
+			add_post_meta( $my_new_post, 'author', $author );
 
-		// if ( is_user_logged_in() ) {
-		//
-		// 	$image = get_avatar( $current_user->user_email, 25 );
-		//
-		// }
+			add_post_meta( $my_new_post, 'style', $style );
 
-		// Insert the post into the database.
-		$my_new_post = wp_insert_post( $my_post );
+			add_post_meta( $my_new_post, 'icon', $image );
 
-		add_post_meta( $my_new_post, 'author', $author );
-
-		add_post_meta( $my_new_post, 'style', $style );
-
-		add_post_meta( $my_new_post, 'icon', $image );
-
-		add_post_meta( $my_new_post, 'message_number', $message_number );
-
-		$post_container = $this->cp_populate( $index );
+			$post_container = $this->cp_populate( $index );
+		}
 
 		wp_send_json_success( [
 			'message' => $post_container,
@@ -442,7 +431,7 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 	}
 
 	/**
-	 * Parse the input string.
+	 * Parse the input string. (add goodies later)
 	 *
 	 * @param string $input - string to parse.
 	 *
@@ -484,22 +473,6 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 	}
 
 
-			/**
-			 *  Function to generate and return a random 20 character string of digits
-			 *
-			 * @since 0.1
-			 */
-	public function random_20_chars() {
-
-		$final = '';
-
-		for ( $i = 1; $i < 20; $i++ ) {
-			$digit = rand( 1, 10 );
-			$final .= $digit;
-		}
-
-		return $final;
-	}
 
 	/**
 	 * Define 'starts_with' function.
