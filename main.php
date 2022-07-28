@@ -14,7 +14,6 @@
 include 'utils/class-chatpress.php';
 include 'utils/classes/class-Channel.php';
 include 'utils/classes/class-Message.php';
-include 'settings.php';
 
 // include on dashboard
 if ( is_admin() ) {

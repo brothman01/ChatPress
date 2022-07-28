@@ -9,9 +9,12 @@ Author URI:	http://www.BenRothman.org
 Text Domain:	chatpress
 License:	GPL-2.0+
 */
+
+include 'settings.php';
+
 class ChatPress {
 
-
+	
 	public static $options;
 
 	/**
@@ -319,15 +322,20 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 	 */
 	public function chatpress_erase_all_messages() {
 
-		// $args = array(
-		// 	'posts_per_page'   => -1,
-		// 	'post_type'        => 'chatpress_message',
-		// );
-		// $the_query = new WP_Query( $args );
+		$query = new WP_Query(array(
+			'post_type' => 'chatpress_message',
+			'post_status' => 'publish',
+			'posts_per_page' => -1,
+		));
+		
+		
+		while ($query->have_posts()) {
+			$query->the_post();
+			$post_id = get_the_ID();
+			wp_delete_post( $post_id, true );
 
-		// while ( $the_query->have_posts() ) {
-		// 	wp_delete_post( $post->ID, true);
-		// }
+		}
+		
 
 		wp_send_json_success( [
 			'message' => 'foobar',

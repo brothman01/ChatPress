@@ -49,12 +49,7 @@ jQuery( document ).ready( function($) {
 			url : cp_script.ajaxurl,
 			data : { action: "chatpress_erase_all_messages" },
 			success: function(response) {
-			   if(response.type == "success") {
-					console.log('success');
-			   }
-			   else {
-					console.log('failed');
-			   }
+					console.log(response);
 			}
 		 });
 
