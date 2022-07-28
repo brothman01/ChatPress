@@ -1,6 +1,6 @@
 <?php
 /*
- Plugin Name:	ChatPress
+Plugin Name:	ChatPress
 Plugin URI:	https://wordpress.org/plugins/chatpress
 Description:	This plugin creates a chatboard that updates with AJAX to embed on pages that keeps the identity of each poster anonymous.
 Version:	2.0.0
@@ -350,7 +350,8 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 	 */
 	public function chatpress_post_message() {
 
-		$message = wp_unslash( sanitize_text_field( $_POST['data']['message'] ) );
+
+		$message = wp_unslash( wp_kses_post( $_POST['data']['message'] ) );
 
 		$message = $this->cp_parse( $message );
 
