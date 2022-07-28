@@ -1,10 +1,10 @@
 === ChatPress ===
 Contributors: Ben Rothmsn
-Tags: chatroom, ajax, livechat, llive, support
-Requires at least: 4.2
-Tested up to: 6.1
+Tags: chatroom, ajax, livechat, live, support, channel
+Requires at least: 4.2.0
+Tested up to: 6.0.1
 Requires PHP: 8.0
-Stable tag: 1.9.0
+Stable tag: 2.0.1
 License: GPL
 
 A simple WordPress plugin to easily add livechat to your site so that your users can communicate with eachother in real time.
