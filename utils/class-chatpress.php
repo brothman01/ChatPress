@@ -335,6 +335,10 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 
 		}
 
+		wp_send_json_success( [
+			'message' => 'foobar',
+		] );
+
 	}
 
 	/**

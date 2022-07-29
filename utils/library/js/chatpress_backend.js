@@ -49,7 +49,11 @@ jQuery( document ).ready( function($) {
 			url : cp_script.ajaxurl,
 			data : { action: "chatpress_erase_all_messages" },
 			success: function(response) {
-					console.log(response);
+
+				let success = response.success == true ? 'Messages Cleared' : 'There was a problem clearing the messages.';
+				$('#wpbody').prepend('<div class="notice notice-info"><br />' + success + '</div>');    
+
+					// console.log(response.success);
 			}
 		 });
 
