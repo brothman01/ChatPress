@@ -51,7 +51,7 @@ jQuery( document ).ready( function($) {
 			success: function(response) {
 
 				let success = response.success == true ? 'Messages Cleared' : 'There was a problem clearing the messages.';
-				$('#wpbody').prepend('<div class="notice notice-info"><br />' + success + '</div>');    
+				$('#wpbody').prepend('<div class="notice notice-info"><p>' + success + '</p></div>');    
 
 					// console.log(response.success);
 			}

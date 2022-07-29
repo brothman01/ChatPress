@@ -405,7 +405,7 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 		
 		}
 		
-		return apply_filters( 'wpb_get_ip', $ip );
+		return $ip;
 		
 		}
 
