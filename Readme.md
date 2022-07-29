@@ -4,7 +4,7 @@
 [AJAX](https://wordpress.org/themes/tags/ajax/), [support](https://wordpress.org/themes/tags/support/), [discussion](https://wordpress.org/themes/tags/discussion/), [crowd](https://wordpress.org/themes/tags/crowd/), [input](https://wordpress.org/themes/tags/input/)<br />
 **Requires at least:** 4.2 
 **Tested up to:** 6.0.1
-**Stable tag:** 2.0.2
+**Stable tag:** 2.1.0
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html
 **Requires PHP 7.4**
@@ -19,6 +19,16 @@ where `xx` is the id of the channel post
 -- OR --
 just look at the list view of every chatpress channel on the dashboard and copy what is in the 'Shortcode' column.
 ## Changelog:
+**2.1.0**
+- added clear old messages button
+- added flag of origin country as author name
+- removed useless message number link from output
+- fixed images
+
+**2.0.0**
+- made date smaller
+- removed useless crontask
+
 **1.8.0**
 - Submitted plugin to WordPress plugin repository.
 

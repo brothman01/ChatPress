@@ -4,7 +4,7 @@ Tags: chatroom, ajax, livechat, live, support, channel
 Requires at least: 4.2.0
 Tested up to: 6.0.1
 Requires PHP: 7.4
-Stable tag: 2.0.2
+Stable tag: 2.1.0
 License: GPL
 
 A simple WordPress plugin to easily add livechat to your site so that your users can communicate with eachother in real time.
@@ -36,6 +36,16 @@ Can images be used in chat messages?
 Yes
 
 Changelog:
+**2.1.0**
+- added clear old messages button
+- added flag of origin country as author name
+- removed useless message number link from output
+- fixed images
+
+**2.0.0**
+- made date smaller
+- removed useless crontask
+
 **1.9.0**
 - Added column to show shortcode of every channel
 - Fixed function named and do comments

@@ -1,14 +1,4 @@
 <?php
-/*
-Plugin Name:	ChatPress
-Plugin URI:		https://wordpress.org/plugins/chatpress
-Description:	just a simple WordPress plugin to create a chatboard that on any page that updates with AJAX to embed on pages that keeps the identity of each poster anonymous.
-Version:		2.1.0
-Author:			Ben Rothman
-Author URI:		http://www.BenRothman.org
-Text Domain:	chatpress
-License:		GPL-2.0+
-*/
 
 include 'settings.php';
 
