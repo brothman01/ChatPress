@@ -1,13 +1,13 @@
 <?php
 /*
 Plugin Name:	ChatPress
-Plugin URI:	https://wordpress.org/plugins/chatpress
-Description:	This plugin creates a chatboard that updates with AJAX to embed on pages that keeps the identity of each poster anonymous.
-Version:	2.0.1
-Author:		Ben Rothman
-Author URI:	http://www.BenRothman.org
+Plugin URI:		https://wordpress.org/plugins/chatpress
+Description:	just a simple WordPress plugin to create a chatboard that on any page that updates with AJAX to embed on pages that keeps the identity of each poster anonymous.
+Version:		2.1.0
+Author:			Ben Rothman
+Author URI:		http://www.BenRothman.org
 Text Domain:	chatpress
-License:	GPL-2.0+
+License:		GPL-2.0+
 */
 
 include 'settings.php';
@@ -285,8 +285,6 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 
 			while ( $message_query->have_posts() ) {
 
-
-
 					$message_query->the_post();
 
 					$messages .= '<div class="chatpress_message_div" data-index="' . get_the_title() . '">';
@@ -302,6 +300,7 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 						$messages .= '</div>';
 
 				}
+					$messages .=  get_post_meta( get_the_ID(), 'author', true);
 
 					$messages .= get_the_content();
 
@@ -335,11 +334,6 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 			wp_delete_post( $post_id, true );
 
 		}
-		
-
-		wp_send_json_success( [
-			'message' => 'foobar',
-		] );
 
 	}
 
@@ -357,7 +351,7 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 
 		$index = wp_unslash( sanitize_text_field( $_POST['data']['index'] ) );
 
-		// $author = wp_unslash( sanitize_text_field( $_POST['data']['author'] ) );
+		$author = 'foobar';
 
 		$style = wp_unslash( sanitize_text_field( $_POST['data']['style'] ) );
 
@@ -377,8 +371,8 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 		if ( $message != NULL && $message != '' ) {
 			$my_new_post = wp_insert_post( $my_post );
 
-			add_post_meta( $my_new_post, 'author', $author );
-
+			add_post_meta( $my_new_post, 'author', $this->get_country_flag( $this->get_the_user_ip() ) );
+			
 			add_post_meta( $my_new_post, 'style', $style );
 
 			add_post_meta( $my_new_post, 'icon', $image );
@@ -389,6 +383,51 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 		wp_send_json_success( [
 			'message' => $post_container,
 		] );
+
+	}
+
+	/**
+	 *  PHP function called to get the ip of the current user
+	 *
+	 * @since 2.1
+	 */
+	public function get_the_user_ip() {
+
+		if ( ! empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
+		
+		//check ip from share internet
+		
+		$ip = $_SERVER['HTTP_CLIENT_IP'];
+		
+		} elseif ( ! empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
+		
+		//to check ip is pass from proxy
+		
+		$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+		
+		} else {
+		
+		$ip = $_SERVER['REMOTE_ADDR'];
+		
+		}
+		
+		return apply_filters( 'wpb_get_ip', $ip );
+		
+		}
+
+	/**
+	 *  PHP function called to get a flag icon of the country of origin of a certain ip
+	 *
+	 * @since 2.1
+	 */
+	public function get_country_flag( $ip ) {
+		if ( $ip == '127.0.0.1' ) {
+			$ip = '69.162.81.155'; // random american ip
+		}
+
+		$response = wp_remote_get( 'https://ipwho.is/' . $ip );
+		$flag = json_decode($response['body'], true);
+		return '<img src="' . $flag['flag']['img'] . '" style="width: 16px;" />';
 
 	}
 
