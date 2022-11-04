@@ -570,7 +570,7 @@ if ( ! current_user_can( 'editor' ) && ! current_user_can( 'administrator' ) ) {
 
 		wp_localize_script( 'cp_script', 'cp_script', [
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
-			'nonce' => wp_create_nonce('chatpress'),
+			'nonce'   => wp_create_nonce('chatpress'),
 		] );
 
 		wp_enqueue_script( 'cp_script' );
