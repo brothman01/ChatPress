@@ -34,7 +34,8 @@ jQuery( document ).ready( function($) {
 			url: cp_script.ajaxurl, // Including ajax file
 			data: {
 			"action": "chatpress_post_message",
-			"data"   : data
+			"data"   : data,
+			"nonce": cp_script.nonce
 			},
 			success: function( response ) { // Show returned data using the function.
 				// alert( data.message );
@@ -87,7 +88,8 @@ jQuery( document ).ready( function($) {
 			url: cp_script.ajaxurl, // Including ajax file
 			data: {
 			"action": "chatpress_refresh_message",
-			"data"   : data
+			"data"   : data,
+			"nonce": cp_script.nonce,
 			},
 			success: function( response ) { // Show returned data using the function.
 				// alert( data.message );
@@ -125,6 +127,7 @@ jQuery( document ).ready( function($) {
 			data: {
 				"action": "chatpress_delete_message",
 				"data"   : data,
+				"nonce": cp_script.nonce,
 			},
 			success: function( response ) { // Show returned data using the function.
 	
