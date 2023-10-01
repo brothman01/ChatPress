@@ -2,7 +2,7 @@
 Contributors: brothman01
 Tags: chatroom, ajax, livechat, live, support, channel
 Requires at least: 4.2.0
-Tested up to: 6.0.1
+Tested up to: 6.3
 Requires PHP: 7.4
 Stable tag: 2.1.0
 License: GPL
